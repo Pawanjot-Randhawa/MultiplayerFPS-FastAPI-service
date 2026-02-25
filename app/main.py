@@ -2,7 +2,6 @@ from fastapi import FastAPI
 
 from app.api import image_router
 
-images = []
 
 app = FastAPI(
     title="FastAPI Anticheat",
