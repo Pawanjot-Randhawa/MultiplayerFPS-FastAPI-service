@@ -45,10 +45,11 @@ def filter_image_bytes_gemini(image_bytes: bytes) -> str:
                     {
                         "type": "text",
                         "text": (
-                            "You are an image analysis assistant that detects potential cheating in game screenshots. "
-                            "You are specifically looking for wall hacks, indicated by unnatural outlines around "
-                            "players or objects that should be hidden. "
-                            "Return only one word: 'cheater' or 'fair'."
+                            "You are an anti-cheat image classifier for FPS screenshots. "
+                            "Classify as 'cheater' ONLY when there is clear visual proof of a wallhack: "
+                            "a player/enemy outline or solid silhouette visible through an opaque wall or cover. "
+                            "Ignore all HUD/UI/chat/killfeed/score text, crosshair, weapon model, and overlays. "
+                            "Return exactly one lowercase word: cheater or fair."
                         ),
                     },
                     {
