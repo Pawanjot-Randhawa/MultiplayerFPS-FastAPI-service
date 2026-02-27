@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse, Response
 
 from app.services.decompress import decode_godot_png
 from app.services.filter import filter_image_bytes
+from app.services.gemini_filter import filter_image_bytes_gemini
 
 images = []
 
@@ -14,6 +15,8 @@ def upload_image(image: bytes = Body(..., media_type="application/octet-stream")
     decoded_image = decode_godot_png(image)
     images.append(decoded_image)
     flag = filter_image_bytes(decoded_image)
+    if flag == "suspected":
+        flag = filter_image_bytes_gemini(decoded_image)
     return JSONResponse(
         content={
             "message": "Image uploaded and decoded successfully",
